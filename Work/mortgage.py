@@ -21,4 +21,4 @@ while principal > 0:
     total_paid = total_paid + payment
     number_of_months += 1    
 
-print('Total paid', total_paid, 'Number of months', number_of_months)
+print('Total paid', total_paid, 'Number of months required', number_of_months)
