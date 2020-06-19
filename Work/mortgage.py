@@ -1,6 +1,6 @@
 # mortgage.py
 #
-# Exercise 1.9
+# Exercise 1.10
 
 principal = 500000.0
 rate = 0.05
@@ -22,11 +22,13 @@ while principal > 0:
     month_count += 1 
     if (month_count >= extra_payment_start_month) and (month_count <= extra_payment_end_month):
         payment = regular_payment + extra_payment
-        print('Extra payment month', month_count)
+        #print('Extra payment month', month_count)
     else:
         payment = regular_payment
 
     principal = principal * (1+rate/12) - payment 
     total_paid = total_paid + payment
+    print(month_count, total_paid, principal)
        
-print('Total paid', total_paid, 'Number of months required', month_count)
+print('Total paid', total_paid)
+print('Months', month_count)
