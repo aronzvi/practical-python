@@ -1,6 +1,6 @@
 # mortgage.py
 #
-# Exercise 1.11
+# Exercise 1.17
 
 principal = 500000.0
 rate = 0.05
@@ -27,10 +27,10 @@ while principal > 0:
 
     principal = principal * (1+rate/12) - payment
     total_paid = total_paid + payment
-    print(month_count, total_paid, principal)
+    print(f'{month_count:<5} ${total_paid:<20} ${principal}')
 
 if principal < 0:
-        print('Correcting last month overpayment by', abs(principal))
+        print(f'Correcting last month overpayment by ${abs(principal)}')
         total_paid = total_paid - abs(principal)
-print('Total paid', total_paid)
-print('Months', month_count)
+print(f'Total paid: ${total_paid}')
+print(f'Months: {month_count}')
