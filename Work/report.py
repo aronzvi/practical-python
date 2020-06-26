@@ -1,6 +1,6 @@
 # report.py
 #
-# Exercise 2.6
+# Exercise 2.7
 
 import csv
 
@@ -26,3 +26,16 @@ def read_prices(filename):
                 print('Error: bad value for row')
                 pass
     return prices
+
+stocks = read_portfolio('Data/portfolio.csv')
+prices = read_prices('Data/prices.csv')
+
+orig_value = 0
+current_value = 0
+for s in stocks:
+    orig_value += s['shares'] * s['price']
+    current_value += s['shares'] * prices[s['name']]
+
+print('original portfolio value', orig_value)
+print('current portfolio value:', current_value)
+print(f'gain/loss: {current_value - orig_value:0.3f}', )
