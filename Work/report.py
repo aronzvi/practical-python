@@ -1,6 +1,6 @@
 # report.py
 #
-# Exercise 2.9
+# Exercise 2.10
 
 import csv
 
@@ -39,15 +39,9 @@ def make_report(portfolio, prices):
 
     return report
 
-stocks = read_portfolio('Data/portfolio.csv')
+portfolio = read_portfolio('Data/portfolio.csv')
 prices = read_prices('Data/prices.csv')
+report = make_report(portfolio, prices)
 
-orig_value = 0
-current_value = 0
-for s in stocks:
-    orig_value += s['shares'] * s['price']
-    current_value += s['shares'] * prices[s['name']]
-
-print('original portfolio value', orig_value)
-print('current portfolio value:', current_value)
-print(f'gain/loss: {current_value - orig_value:0.3f}', )
+for name, shares, price, change in report:
+    print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
