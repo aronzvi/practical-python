@@ -1,6 +1,6 @@
 # report.py
 #
-# Exercise 2.7
+# Exercise 2.9
 
 import csv
 
@@ -26,6 +26,18 @@ def read_prices(filename):
                 print('Error: bad value for row')
                 pass
     return prices
+
+def make_report(portfolio, prices):
+    report = []
+
+    for s in portfolio:
+        name = (s['name'])
+        current_price = prices[name]
+        change = current_price - s['price']
+        r = (name, s['shares'], current_price, change)
+        report.append(r)
+
+    return report
 
 stocks = read_portfolio('Data/portfolio.csv')
 prices = read_prices('Data/prices.csv')
