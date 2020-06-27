@@ -1,8 +1,10 @@
 # report.py
 #
-# Exercise 2.10
+# Exercise 2.11
 
 import csv
+
+headers = ('Name', 'Shares', 'Price', 'Change')
 
 def read_portfolio(filename):
     portfolio = []
@@ -43,5 +45,7 @@ portfolio = read_portfolio('Data/portfolio.csv')
 prices = read_prices('Data/prices.csv')
 report = make_report(portfolio, prices)
 
+print('%10s %10s %10s %10s' % headers)
+print('%s ' % (10 * '-') * len(headers))
 for name, shares, price, change in report:
     print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
