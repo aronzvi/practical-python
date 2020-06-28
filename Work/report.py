@@ -1,6 +1,6 @@
 # report.py
 #
-# Exercise 2.11
+# Exercise 2.12
 
 import csv
 
@@ -48,4 +48,5 @@ report = make_report(portfolio, prices)
 print('%10s %10s %10s %10s' % headers)
 print('%s ' % (10 * '-') * len(headers))
 for name, shares, price, change in report:
-    print(f'{name:>10s} {shares:>10d} {price:>10.2f} {change:>10.2f}')
+    price_with_symbol = '$%.2f' % price
+    print(f'{name:>10s} {shares:>10d} {price_with_symbol:>10s} {change:>10.2f}')
