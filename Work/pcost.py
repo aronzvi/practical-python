@@ -1,6 +1,6 @@
 # pcost.py
 #
-# Exercise 2.15
+# Exercise 2.16
 import csv
 import sys
 
@@ -11,11 +11,11 @@ def portfolio_cost(filename):
     rows = csv.reader(f)
     headers = next(rows)
     for rowno, row in enumerate(rows, start=1):
+        record = dict(zip(headers, row))
         try:
-            shares = int(row[1])
-            price = float(row[2].strip())
-            cost = shares * price
-            total_cost += cost
+            nshares = int(record['shares'])
+            price = float(record['price'])
+            total_cost += nshares * price
         except ValueError:
             print(f'Row {rowno}: Bad row: {row}')
 
