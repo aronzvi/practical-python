@@ -1,6 +1,6 @@
 # report.py
 #
-# Exercise 2.16
+# Exercise 3.1
 
 import csv
 
@@ -42,13 +42,22 @@ def make_report(portfolio, prices):
 
     return report
 
+def print_report(report):
+    '''
+    Output the report
+    '''
+    
+    print('%10s %10s %10s %10s' % headers)
+    print('%s ' % (10 * '-') * len(headers))
+    for name, shares, price, change in report:
+        price_with_symbol = '$%.2f' % price
+        print(f'{name:>10s} {shares:>10d} {price_with_symbol:>10s} {change:>10.2f}')
+
 #portfolio = read_portfolio('Data/portfolio.csv')
 portfolio = read_portfolio('Data/portfoliodate.csv')
 prices = read_prices('Data/prices.csv')
 report = make_report(portfolio, prices)
+print_report(report)
 
-print('%10s %10s %10s %10s' % headers)
-print('%s ' % (10 * '-') * len(headers))
-for name, shares, price, change in report:
-    price_with_symbol = '$%.2f' % price
-    print(f'{name:>10s} {shares:>10d} {price_with_symbol:>10s} {change:>10.2f}')
+
+
