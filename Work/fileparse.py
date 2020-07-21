@@ -1,15 +1,16 @@
 # fileparse.py
 #
-# Exercise 3.5
+# Exercise 3.6
 
 import csv
 
-def parse_csv(filename, select=None, types=None):
+def parse_csv(filename, select=None, types=None, has_headers=True):
     
     with open(filename) as f:
         rows = csv.reader(f)
 
-        headers = next(rows)
+        if has_headers:
+            headers = next(rows)
 
         if select:
             indices = [headers.index(col_name) for col_name in select]
@@ -27,8 +28,11 @@ def parse_csv(filename, select=None, types=None):
 
             if types:
                 row = [func(val) for func, val in zip(types, row)]
-
-            record = dict(zip(headers, row))
+            
+            if has_headers:
+                record = dict(zip(headers, row))
+            else:
+                record = tuple(row)
             records.append(record)
 
     return records
