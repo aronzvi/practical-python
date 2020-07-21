@@ -1,13 +1,13 @@
 # fileparse.py
 #
-# Exercise 3.6
+# Exercise 3.7
 
 import csv
 
-def parse_csv(filename, select=None, types=None, has_headers=True):
+def parse_csv(filename, select=None, types=None, has_headers=True, delimiter=','):
     
     with open(filename) as f:
-        rows = csv.reader(f)
+        rows = csv.reader(f, delimiter=delimiter)
 
         if has_headers:
             headers = next(rows)
