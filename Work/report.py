@@ -1,8 +1,9 @@
 # report.py
 #
-# Exercise 3.15
+# Exercise 3.16
 
 import fileparse
+import sys
 
 headers = ('Name', 'Shares', 'Price', 'Change')
 
@@ -45,3 +46,6 @@ def portfolio_report(portfolio_filename, prices_filename):
 
 def main(argv):
     portfolio_report(argv[1], argv[2])
+
+if __name__ == '__main__':
+    main(sys.argv)

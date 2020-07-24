@@ -1,6 +1,6 @@
 # pcost.py
 #
-# Exercise 3.15
+# Exercise 3.16
 
 import csv
 import sys
@@ -21,3 +21,6 @@ def main(argv):
     
     cost = portfolio_cost(filename)
     print(f'Total cost {cost}')
+
+if __name__ == '__main__':
+    main(sys.argv)
