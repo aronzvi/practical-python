@@ -1,16 +1,18 @@
 # report.py
 #
-# Exercise 3.18
+# Exercise 4.4
 
 import fileparse
 import sys
+import stock
 
 headers = ('Name', 'Shares', 'Price', 'Change')
 
 def read_portfolio(filename):
     with open(filename, 'rt') as f:
-        portfolio = fileparse.parse_csv(f, select=['name','shares','price'], types=[str,int,float])
-    return portfolio
+        portdics = fileparse.parse_csv(f, select=['name','shares','price'], types=[str,int,float])
+        portfolio = [stock.Stock(d['name'], d['shares'], d['price']) for d in portdics]
+        return portfolio
 
 def read_prices(filename):
     with open(filename, 'rt') as f:
@@ -21,10 +23,10 @@ def make_report(portfolio, prices):
     report = []
 
     for s in portfolio:
-        name = (s['name'])
+        name = (s.name)
         current_price = prices[name]
-        change = current_price - s['price']
-        r = (name, s['shares'], current_price, change)
+        change = current_price - s.price
+        r = (name, s.shares, current_price, change)
         report.append(r)
 
     return report
