@@ -1,10 +1,11 @@
 # report.py
 #
-# Exercise 4.4
+# Exercise 4.7
 
 import fileparse
 import sys
 import stock
+import tableformat
 
 headers = ('Name', 'Shares', 'Price', 'Change')
 
@@ -31,22 +32,21 @@ def make_report(portfolio, prices):
 
     return report
 
-def print_report(report):
+def print_report(reportdata, formatter):
     '''
-    Output the report
+    Prints a nicely formated table from a list of (name, shares, price, change) tuples
     '''
-
-    print('%10s %10s %10s %10s' % headers)
-    print('%s ' % (10 * '-') * len(headers))
-    for name, shares, price, change in report:
-        price_with_symbol = '$%.2f' % price
-        print(f'{name:>10s} {shares:>10d} {price_with_symbol:>10s} {change:>10.2f}')
+    formatter.headings(['Name', 'Shares', 'Price', 'Change'])
+    for name, shares, price, change in reportdata:
+        rowdata = [name, str(shares), f'{price:0.2f}', f'{change:0.2f}']
+        formatter.row(rowdata)
 
 def portfolio_report(portfolio_filename, prices_filename):
     portfolio = read_portfolio(portfolio_filename)
     prices = read_prices(prices_filename)
     report = make_report(portfolio, prices)
-    print_report(report)
+    formatter = tableformat.HTMLTableFormatter()
+    print_report(report, formatter)
 
 def main(argv):
     portfolio_report(argv[1], argv[2])
