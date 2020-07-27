@@ -1,6 +1,6 @@
 # report.py
 #
-# Exercise 4.7
+# Exercise 4.8
 
 import fileparse
 import sys
@@ -41,15 +41,16 @@ def print_report(reportdata, formatter):
         rowdata = [name, str(shares), f'{price:0.2f}', f'{change:0.2f}']
         formatter.row(rowdata)
 
-def portfolio_report(portfolio_filename, prices_filename):
+def portfolio_report(portfolio_filename, prices_filename, fmt='txt'):
     portfolio = read_portfolio(portfolio_filename)
     prices = read_prices(prices_filename)
     report = make_report(portfolio, prices)
-    formatter = tableformat.HTMLTableFormatter()
+
+    formatter = tableformat.create_formatter(fmt)
     print_report(report, formatter)
 
 def main(argv):
-    portfolio_report(argv[1], argv[2])
+    portfolio_report(argv[1], argv[2], argv[3])
 
 if __name__ == '__main__':
     main(sys.argv)
