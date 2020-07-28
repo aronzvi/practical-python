@@ -1,4 +1,4 @@
-# Exercise 4.7
+# Exercise 4.10
 
 class TableFormatter:
     def headings(self, headers):
@@ -60,3 +60,9 @@ def create_formatter(fmt):
     else:
         raise RuntimeError(f'Unknown format {fmt}')
     return formatter
+
+def print_table(objs, attrs, formatter):
+    formatter.headings(attrs)
+    for o in objs:
+        rowdata = [str(getattr(o, a)) for a in attrs]
+        formatter.row(rowdata)
