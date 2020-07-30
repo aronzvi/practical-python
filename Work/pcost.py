@@ -1,17 +1,14 @@
 # pcost.py
 #
-# Exercise 4.4
+# Exercise 6.2
 
 import csv
 import sys
 import report
 
 def portfolio_cost(filename):
-    total_cost = 0
     portfolio = report.read_portfolio(filename)
-    for record in portfolio:
-        total_cost += record.shares * record.price
-    return total_cost
+    return portfolio.total_cost
 
 def main(argv):
     if len(argv) == 2:
