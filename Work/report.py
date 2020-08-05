@@ -1,6 +1,6 @@
 # report.py
 #
-# Exercise 7.4
+# Exercise 7.11
 
 import fileparse
 import sys
@@ -12,9 +12,7 @@ headers = ('Name', 'Shares', 'Price', 'Change')
 
 def read_portfolio(filename, **opts):
     with open(filename, 'rt') as f:
-        portdics = fileparse.parse_csv(f, select=['name','shares','price'], types=[str,int,float], **opts)
-        portfolio = [stock.Stock(**d) for d in portdics]
-        return Portfolio(portfolio)
+        return Portfolio.from_csv(f)
 
 def read_prices(filename):
     with open(filename, 'rt') as f:
