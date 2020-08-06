@@ -1,12 +1,21 @@
 # report.py
 #
-# Exercise 7.11
+# Exercise fileparse.py
 
 import fileparse
 import sys
 import stock
 import tableformat
 from portfolio import Portfolio
+import logging
+
+# This file sets up basic configuration of the logging module.
+# Change settings here to adjust logging output as needed.
+logging.basicConfig(
+        filename = 'app.log',            # Name of the log file (omit to use stderr)
+        filemode = 'w',                  # File mode (use 'a' to append)
+        level    = logging.DEBUG,      # Logging level (DEBUG, INFO, WARNING, ERROR, or CRITICAL)
+    )
 
 headers = ('Name', 'Shares', 'Price', 'Change')
 

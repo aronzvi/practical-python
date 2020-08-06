@@ -1,8 +1,10 @@
 # fileparse.py
 #
-# Exercise 3.17
+# Exercise 8.3
 
 import csv
+import logging
+log = logging.getLogger(__name__)
 
 def parse_csv(file, select=None, types=None, has_headers=True, delimiter=',', silence_errors=False):
     if select and not has_headers:
@@ -35,8 +37,8 @@ def parse_csv(file, select=None, types=None, has_headers=True, delimiter=',', si
                 row = [func(val) for func, val in zip(types, row)]
             except ValueError as e:
                 if not silence_errors:
-                    print(f"Row {i}: Couldn't convert {row}")
-                    print(f'Row {i}: Reason {e}')
+                    log.warning("Row %d: Couldn't convert %s", i, row)
+                    log.debug('Row %d: Reason %s', i, e)
                 continue
 
         if has_headers:
