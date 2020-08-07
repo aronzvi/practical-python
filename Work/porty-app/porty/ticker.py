@@ -1,9 +1,9 @@
-# Exercise 6.15
+# Exercise 9.1
 
-from follow import follow
+from .follow import follow
 import csv
-import report
-import tableformat
+from . import report
+from . import tableformat
 
 def select_columns(rows, indices):
     for row in rows:

@@ -1,7 +1,7 @@
-#Exercise 7.11
+# Exercise 9.1
 
-import stock
-import fileparse
+from . import stock
+from . import fileparse
 
 class Portfolio:
     def __init__(self):

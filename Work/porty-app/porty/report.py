@@ -1,12 +1,12 @@
 # report.py
 #
-# Exercise fileparse.py
+# Exercise 9.1
 
-import fileparse
+from . import fileparse
 import sys
-import stock
-import tableformat
-from portfolio import Portfolio
+from . import stock
+from . import tableformat
+from .portfolio import Portfolio
 import logging
 
 # This file sets up basic configuration of the logging module.

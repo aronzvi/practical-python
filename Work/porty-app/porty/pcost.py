@@ -1,10 +1,10 @@
 # pcost.py
 #
-# Exercise 6.2
+# Exercise 9.1
 
 import csv
 import sys
-import report
+from . import report
 
 def portfolio_cost(filename):
     portfolio = report.read_portfolio(filename)
